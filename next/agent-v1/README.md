@@ -1,8 +1,12 @@
 # juebot agent-v1：撅撅的本地行为链候选
 
-**0.3.0-dev.6 本轮接续（2026-10-29，未安装）**：本地完整链已补齐并通过937项最新测试（0失败/0跳过）：真实来信观察/自动复读/反馈，逐流管理与摘要共享/纠错，QQ社交和Code分流，B站材料→人工学习→精确摘要创作授权→意愿→最终人审→统一Outbox，及任务/出站/入站冷归档。活目录和历史候选486文件未改。见[最新验证](../../VERIFICATION-AGENT-DEV6.md)与[完整本地范围](LOCAL-COMPLETION-DEV6.md)。真实Host、认证HTTP、界面视觉、QQ/B站和真实模型仍未验；无正式管理工具，停在部署前。下文旧轮次状态、计数和“下一步”属于历史，当前能力/待验以本段及最新验证为准，主方案仍v0.7.0。
+**0.3.0-dev.7 接续（2026-10-29，候选未安装）**：dev.6 已安装并在真实 Desktop Host 完成装载、独立测试库初始化与重开验证；同一页面 setup 正常，但 agent 全部数据请求失败，页面刷新及整 Host 重启均不能恢复。现场依据为[最新验收 §11.6–11.7](../../VERIFICATION-LOCAL-ACCEPTANCE-DEV6.md)和[故障交接](../../DSH-AGENT-HTTP-HANDOFF.md)。旧文档的“dev.6 未安装/未挂载”已被这些证据覆盖。
 
-本轮接线合同见[APP-INTEGRATION.md](APP-INTEGRATION.md)。默认构建目标已更新到dev.6，保护dev.5及全部更早候选。
+dev.7 将纯 GET 路由改为 buffered，含 POST 路由保持 streaming，新增 owner 门禁后的静态 health 探针和客户端 HTTP/code 错误提示。真实 TCP 测试已复现：rc.3 连接桥给 streaming GET 附 body，在进入 agent handler 前即失败；**仅装 dev.7 仍不能修复混合 GET/POST 路由**。另有经用户授权准备的连接依赖源码补丁候选，须走 DSH 正式运行时发布渠道，不捆绑/覆写依赖或放宽版本检查。具体证据、包哈希、部署条件见[dev.7 验证](../../VERIFICATION-AGENT-DEV7.md)。真实 Desktop 装后验收留给 DSH 会话；QQ/B站、模型、Code 和生产库本轮不接入。产品主方案仍 v0.7.0。
+
+dev.6 的937项通过属于历史本地证据，其功能范围见[本地范围](LOCAL-COMPLETION-DEV6.md)。下文旧轮次状态与计数保留历史，不作为当前安装/验收结论。
+
+本轮接线合同见[APP-INTEGRATION.md](APP-INTEGRATION.md)。默认构建目标已更新到 dev.7，保护 bundle、0.2 配置候选以及 dev.1–dev.6 全部封存文件。
 
 2026-10-29。源码位于独立 `next/agent-v1`，打包目标为 `candidates/0.3.0-dev.5`；产品设计仍为 v0.7.0。历史 0.1.0-dev.2 安装记录和 0.2.0-dev.1 配置候选均保留。本候选未安装，不替换活 bundle、封存 0.2 或前次 0.3.0-dev.1、dev.2、dev.3 与 dev.4。
 
@@ -40,7 +44,7 @@
 
 ## 完整待验清单
 
-1. 当前缺真实 DSH 管理/Inspect 工具：未安装候选、未正式挂载 Host，未实测真实认证 HTTP、卸载恢复或原生浏览器操作。VM 注册/模拟认证不代替这些验收。
+1. dev.6 已正式安装且 Host 生命周期通过，真实界面已观察到 agent 数据面故障。dev.7 与连接补丁的隔离真实 TCP 测试不代替 Desktop 装后认证 HTTP、视觉和卸载恢复验收；后者由 DSH 会话按新报告接续。
 2. 可信 Host ports 尚需实际 connector、入站证明、权限/管理员账号证明、canonical account 映射与发送回执；未连接 QQ 或 B站，也未执行浏览、发布、上传、扫码或 Cookie 操作。
 3. Code桥复用DSH Agent与实际策略接口；实际工作区、会话、费用和受限工具未正式验收。活跃提问/审批续接已本地实现，重启恢复仍缺；不会另建OS沙箱或把策略名当隔离证明。
 4. 聊天、风格复核、成长评测和视频计划的实际模型/端点、费用与持续预算未确认，未请求真实或付费服务。上下文字数预算不冒充精确 token 估算。
@@ -61,4 +65,4 @@ $node = 'C:\Users\Administrator\.dsh\dsh-runtimes\dsh-primary-runtime\dependenci
 & $node --test next/agent-v1/test/package.test.mjs
 ```
 
-命令从项目根执行。脚本校验受保护活 bundle/封存 0.2/前次 0.3.0-dev.1、dev.2、dev.3 与 dev.4 前后哈希、路径/link/reparse/hardlink、严格有限 Client 转换、单 loader 双 panel VM、manifest/version/peers/files/imports、逐文件 hash 和归档逐字节一致；输入变化即拒绝旧收据。产物位于 `candidates/0.3.0-dev.5/artifacts`，仅是候选打包，不执行安装、profile 修改、数据库迁移或服务停启。
+命令从项目根执行。脚本校验受保护 bundle/封存 0.2/dev.1–dev.6 前后哈希、路径/link/reparse/hardlink、严格有限 Client 转换、单 loader 双 panel VM、manifest/version/peers/files/imports、逐文件 hash 和归档逐字节一致；输入变化即拒绝旧收据。产物位于 `candidates/0.3.0-dev.7/artifacts`，仅是候选打包，不执行安装、profile 修改、数据库迁移或服务停启。

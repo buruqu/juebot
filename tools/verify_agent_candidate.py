@@ -21,7 +21,8 @@ def main():
         return {'files':len(baseline),'unchanged':True,'baselineSha256':sha(Path(args.baseline))}
     before=protection()
     sdk_sources=[{'environment':key,'path':os.environ[key],'sha256':sha(Path(os.environ[key]))}
-                 for key in ['JUEBOT_DSH_ASSEMBLER_SOURCE','JUEBOT_DSH_CORDIS_MODULE'] if os.environ.get(key)]
+                 for key in ['JUEBOT_DSH_ASSEMBLER_SOURCE','JUEBOT_DSH_CORDIS_MODULE',
+                             'JUEBOT_REAL_HOST_MANIFEST','JUEBOT_REAL_HOST_CONNECTION_CANDIDATE'] if os.environ.get(key)]
     stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     evidence=ROOT/'next/agent-v1/evidence'/stamp;evidence.mkdir(parents=True,exist_ok=False)
     checks={}
@@ -41,7 +42,8 @@ def main():
             files.update((ROOT/'next'/name/part).rglob('*.ts'));files.update((ROOT/'next'/name/part).rglob('*.js'));files.update((ROOT/'next'/name/part).rglob('*.mjs'))
         files.update((ROOT/'next'/name).glob('tsconfig*.json'))
     files.update((ROOT/'tools').glob('*agent_candidate.py'))
-    receipt=json.loads((ROOT/'candidates/0.3.0-dev.6/build-receipt.json').read_text(encoding='utf-8'))
+    files.add(ROOT/'tools/prepare_connection_bridge_candidate.py')
+    receipt=json.loads((ROOT/'candidates/0.3.0-dev.7/build-receipt.json').read_text(encoding='utf-8'))
     passed=all(c['exitCode']==0 for c in checks.values()) and all(
       checks[n]['counts'].get('fail',1)==0 and checks[n]['counts'].get('cancelled',1)==0 and checks[n]['counts'].get('skipped',1)==0
       for n in ['legacy','social-conversation','agent'])
@@ -49,7 +51,7 @@ def main():
         if sha(Path(sdk['path']))!=sdk['sha256']: raise RuntimeError('SDK fixture changed during verification')
     summary={'verifiedAtUTC':stamp,'passed':passed,'checks':checks,'protected':protected,'archiveSha256':receipt['archiveSha256'],'payloadFiles':len(receipt['files']),
       'sourceHashes':[{'file':p.relative_to(ROOT).as_posix(),'sha256':sha(p)} for p in sorted(files)],
-      'totalTests':sum(c['counts'].get('tests',0) for c in checks.values()),'notTested':['real Host','authenticated production HTTP','native browser visuals','real QQ/Bilibili','paid/real model quality','production database or migration'],
+      'totalTests':sum(c['counts'].get('tests',0) for c in checks.values()),'notTested':['installed Desktop Host dev.7 lifecycle/IPC','authenticated installed Desktop HTTP','native browser visuals','real QQ/Bilibili','paid/real model quality','production database or migration'],
       'tools':{'node':str(NODE),'tsc':str(TSC),'python':sys.executable},'sdkSources':sdk_sources}
     (ROOT/'next/agent-v1/evidence.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'passed':passed,'tests':summary['totalTests'],'groups':{k:v['counts'] for k,v in checks.items()},'evidence':str(evidence),'protected':protected,'archiveSha256':receipt['archiveSha256']},ensure_ascii=False))

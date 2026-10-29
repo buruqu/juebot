@@ -9,7 +9,7 @@ import { createHash } from 'node:crypto';
 import vm from 'node:vm';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-const candidate = path.join(root, 'candidates/0.3.0-dev.6');
+const candidate = path.join(root, 'candidates/0.3.0-dev.7');
 const bundle = path.join(candidate, 'bundle');
 const python = 'C:\\Users\\Administrator\\.dsh\\dsh-runtimes\\dsh-primary-runtime\\dependencies\\python\\python.exe';
 const builder = path.join(root, 'tools/build_agent_candidate.py');
@@ -49,7 +49,7 @@ test('default candidate Host is inert and registers no business storage initiali
 test('package versions, default disabled patch and complete payload hashes match receipt', () => {
   const manifest = JSON.parse(read('package.json'));
   const receipt = JSON.parse(readFileSync(path.join(candidate, 'build-receipt.json'), 'utf8'));
-  assert.equal(manifest.version, '0.3.0-dev.6');
+  assert.equal(manifest.version, '0.3.0-dev.7');
   assert.equal(receipt.version, manifest.version);
   assert.equal(manifest.exports['./agent-host'], './agent/host/entry.js');
   assert.equal(manifest.exports['./qq-official-code-channel'], './agent/host/qq-official-code-channel.js');

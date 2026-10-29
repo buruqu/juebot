@@ -13,7 +13,7 @@ import stat
 import subprocess
 import tarfile
 
-VERSION = '0.3.0-dev.6'
+VERSION = '0.3.0-dev.7'
 OLD_VERSION = '0.2.0-dev.1'
 ROOT = Path(__file__).absolute().parents[1]
 NODE = Path(r'C:\Users\Administrator\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe')
@@ -241,7 +241,7 @@ def run(args):
     node, tsc = Path(args.node).absolute(), Path(args.tsc).absolute()
     need(node.is_file() and tsc.is_file(), 'Explicit Node/TypeScript executable missing')
     candidate = guard(ROOT / ('candidates/' + VERSION))
-    protected_paths = [ROOT / 'bundle', ROOT / ('candidates/' + OLD_VERSION), ROOT / 'candidates/0.3.0-dev.1', ROOT / 'candidates/0.3.0-dev.2', ROOT / 'candidates/0.3.0-dev.3', ROOT / 'candidates/0.3.0-dev.4', ROOT / 'candidates/0.3.0-dev.5']
+    protected_paths = [ROOT / 'bundle', ROOT / ('candidates/' + OLD_VERSION), ROOT / 'candidates/0.3.0-dev.1', ROOT / 'candidates/0.3.0-dev.2', ROOT / 'candidates/0.3.0-dev.3', ROOT / 'candidates/0.3.0-dev.4', ROOT / 'candidates/0.3.0-dev.5', ROOT / 'candidates/0.3.0-dev.6']
     protected = {p.relative_to(ROOT).as_posix(): records(p) for p in protected_paths}
     try:
         if args.verify_only:

@@ -1,7 +1,7 @@
 export const inject = ['connection'];
 export const HOST_PRINCIPAL = 'juebot-host-owner';
 const HEADERS = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' };
-const ROUTES = Object.freeze({ status: ['GET'], conversations: ['GET'], events: ['GET'], body: ['GET'],
+const ROUTES = Object.freeze({ health: ['GET'], status: ['GET'], conversations: ['GET'], events: ['GET'], body: ['GET'],
   settings: ['GET', 'POST'], memory: ['GET','POST'], self: ['GET'], creations: ['GET'], creation: ['GET'],
   review: ['POST'], submit: ['POST'], outbox: ['GET'], pause: ['POST'], code: ['GET', 'POST'], 'local-message': ['POST'],
   'creation-recovery':['POST'], reconcile:['POST'], trace:['GET'], 'expression-preview':['POST'],
@@ -40,16 +40,21 @@ export async function installAgentPlane(ctx, config = {}, dependencies = {}) {
     if (disposed) return;
     for (const [suffix, methods] of Object.entries(ROUTES)) {
       const release = ctx.connection.fetch.register({ path: '/api/juebot/agent/' + suffix, methods,
-        requestBody: 'streaming',
+        requestBody: methods.includes('POST') ? 'streaming' : 'buffered',
         async fetch(request) {
           request.signal.throwIfAborted();
-          if (disposed || !application) return unavailable();
+          if (disposed) return unavailable();
+          // Connection still enforces owner admission. This proves route reachability,
+          // not application readiness, and deliberately exposes no runtime state.
+          if (suffix === 'health') return new Response('{"ok":true,"data":{"probe":1}}', { headers: HEADERS });
+          if (!application) return unavailable();
           // Only reached after Connection's owner gate; the factory received our fixed Host principal.
           try { const response = await application.fetch(request); request.signal.throwIfAborted(); return disposed ? unavailable() : response; }
           catch { request.signal.throwIfAborted(); return unavailable(); }
         } });
       registrations.push(once(release));
     }
+    console.info('[juebot-agent] registered fetch routes: %d', registrations.length);
   } catch (error) { await cleanup(); throw error; }
 }
 export async function apply(ctx, config = {}) { return installAgentPlane(ctx, config); }

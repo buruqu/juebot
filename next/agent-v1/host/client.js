@@ -40,6 +40,8 @@ window.__ModuleLoader__.load({
             if (mounted.current && method !== 'GET') setView(previous => ({ ...previous, notice: '写入结果未确认，请刷新核对；不会自动重试。' }));
             controller.abort();
           }, 8000);
+          // Only locally assigned diagnostics may reach the visible error text.
+          let httpStatus = null, diagnosticCode = 'REQUEST_FAILED';
           try {
             const qs = new URLSearchParams(query).toString();
             const response = await fetch('api/juebot/agent/' + name + (qs ? '?' + qs : ''), { method,
@@ -47,20 +49,25 @@ window.__ModuleLoader__.load({
               headers: { Accept: 'application/json', ...(body === null ? {} : { 'Content-Type': 'application/json' }) },
               ...(body === null ? {} : { body: JSON.stringify(body) }) });
             if (controller.signal.aborted || !mounted.current || versions.current.get(name) !== serial) return null;
-            if (response.headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() !== 'application/json') throw Error('INVALID_RESPONSE');
+            httpStatus = Number.isInteger(response.status) && response.status >= 100 && response.status <= 599 ? response.status : null;
+            diagnosticCode = 'INVALID_RESPONSE';
+            if (response.headers.get('content-type')?.split(';')[0]?.trim().toLowerCase() !== 'application/json') throw Error();
             const envelope = await response.json();
             if (!response.ok || !object(envelope) || envelope.ok !== true || !Object.hasOwn(envelope, 'data')) {
               const code = envelope?.error?.code;
-              throw Error(typeof code === 'string' && /^[A-Z][A-Z0-9_]{0,79}$/.test(code) ? code : 'REQUEST_FAILED');
+              diagnosticCode = typeof code === 'string' && /^[A-Z][A-Z0-9_]{0,79}$/.test(code) && code === code.trim()
+                ? code : response.ok ? 'INVALID_RESPONSE' : 'REQUEST_FAILED';
+              throw Error();
             }
             if (controller.signal.aborted || !mounted.current || versions.current.get(name) !== serial) return null;
             return envelope.data;
-          } catch (error) {
+          } catch {
             if (mounted.current && !controller.signal.aborted && versions.current.get(name) === serial) setView(previous => ({ ...previous,
-              error: ['AGENT_UNAVAILABLE', 'STORAGE_FAILURE', 'NOT_CONFIGURED'].includes(error.message) ? t('unconfigured')
-                : error.message === 'INTENTION_UNAVAILABLE' ? '原意愿已过期或其依据已失效，不能恢复；需形成新的有效意愿。'
-                : ['CREATION_WORKFLOW_INVALID', 'CREATION_SOURCE_REVOKED', 'CREATION_SOURCE_CHANGED', 'CREATION_PUBLISH_NOT_AUTHORIZED', 'POLICY_CHANGED'].includes(error.message)
-                  ? '来源、身份或权限已变化，恢复被拒绝。请核对当前授权。' : '请求未完成，请刷新核对。',
+              error: (['AGENT_UNAVAILABLE', 'STORAGE_FAILURE', 'NOT_CONFIGURED'].includes(diagnosticCode) ? t('unconfigured')
+                : diagnosticCode === 'INTENTION_UNAVAILABLE' ? '原意愿已过期或其依据已失效，不能恢复；需形成新的有效意愿。'
+                : ['CREATION_WORKFLOW_INVALID', 'CREATION_SOURCE_REVOKED', 'CREATION_SOURCE_CHANGED', 'CREATION_PUBLISH_NOT_AUTHORIZED', 'POLICY_CHANGED'].includes(diagnosticCode)
+                  ? '来源、身份或权限已变化，恢复被拒绝。请核对当前授权。' : '请求未完成，请刷新核对。')
+                + `（${httpStatus === null ? '' : 'HTTP ' + httpStatus + ' · '}${diagnosticCode}）`,
               ...(method !== 'GET' ? { notice: '写入结果未确认；不会自动重试。' } : {}) }));
             return null;
           } finally { clearTimeout(timeout); controllers.current.delete(controller); }

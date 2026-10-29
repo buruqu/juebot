@@ -4,21 +4,18 @@ juebot 是从作者现有 DSH 本地项目整理的公开开发仓库：围绕�
 
 ## 当前状态
 
-当前候选为 **0.3.0-dev.6，尚未部署**。原项目已有的本地验证记录为 **937 项通过、0 失败、0 跳过**；这是既有证据，公开整理没有重跑这 937 项。真实 Host、认证 HTTP、UI 视觉及交互、QQ、B站、真实模型和实际 Code 工作区均未验收，不能据此认定平台业务可用。后台默认关闭，数据路径为空，安装不自动开启 QQ/B站、模型、Code 执行或正式数据库。
+当前候选为 **0.3.0-dev.7**：纯 GET 修复与诊断；原 rc.3 连接依赖仍阻塞混合路由 GET。仅装插件不足以恢复整个面板，独立连接补丁不包含于安装包，也不代表正式运行时已发布修复。
+
+既有统一验证 **961通过，0失败，0取消，0跳过**；公开整理未重跑。dev.7 Desktop、现场HTTP、真实UI及平台业务未验收。详情见 [验证报告](docs/DEV7-VERIFICATION.md)。
 
 ## 下载与安装控制面
 
-1. 到 [v0.3.0-dev.6 Release](https://github.com/buruqu/juebot/releases/tag/v0.3.0-dev.6) 下载 **dsh-juebot-0.3.0-dev.6.tgz**。
-2. 核对 SHA-256：`6a032b2b705454fd19e3c212a6c34d48dff60549f3b22f6648f1190284cc1c75`。
-3. 在兼容的 DSH **0.2.1-rc.3** 原生插件管理/控制面中选择本地包安装入口，导入该 tgz，并由正式管理器应用至目标 profile。不同管理界面的入口名称可能不同；本次未验证实际安装流程。
-4. 应用后查看原生 `juebot` 面板与 `juebot-setup` 设置面板。后台启用、管理员身份、数据位置、模型预算与平台接线需要另行配置和验收。
-
-**GitHub 的 Download ZIP 是源码工作区，根目录不是可安装插件。请下载上述 tgz，不能把源码 ZIP 当插件安装。** 包的声明 Node 要求为 >=22.18.0，不代表所有符合版本均已实测。
+请使用 [Release tgz](https://github.com/buruqu/juebot/releases/download/v0.3.0-dev.7/dsh-juebot-0.3.0-dev.7.tgz)，按 [安装说明](docs/DEV7-INSTALL.md) 核对哈希并通过正式管理器安装。GitHub Download ZIP 不是安装包。
 
 ## 开发入口与限制
 
 - `next/agent-v1`：当前行为链源码、Host 桥、测试和编译产物；`src`/`bundle` 保留早期核心及控制面。
-- `candidates`：0.2 和 dev.1–dev.6 的封存候选，原件逐字节保留。不要修改历史候选或向活 bundle 输出构建。
+- `candidates`：0.2 和 dev.1–dev.7 的封存候选，原件逐字节保留。不要修改历史候选或向活 bundle 输出构建。
 - `tools/build_agent_candidate.py`：独立候选构建入口。原 Windows 默认 Node/TypeScript 路径属于作者环境，换机必须显式提供自己的 `--node` 与 `--tsc`（现有 TypeScript 编译器脚本路径），例如 `python tools/build_agent_candidate.py --node /absolute/path/to/node --tsc /absolute/path/to/tsc.js`。此命令可能生成输出，使用前阅读脚本的保护和收据检查。
 - `tools/verify_agent_candidate.py` 是原环境验证入口，依赖原环境工具链和证据前提，不承诺跨机一键验证。本次未运行默认 build，也没有重建发布 tgz。
 - 默认 npm build/pack 入口受保护；不自动安装依赖或第三方 SDK。可选本地视频合成仍含原环境 ffmpeg 路径，换机需要适配。

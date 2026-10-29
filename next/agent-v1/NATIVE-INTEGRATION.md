@@ -1,5 +1,7 @@
 # 0.3.0-dev.5 原生接线合同
 
+> 2026-10-29 当前状态补充：dev.6 已正式安装，Host 装载/独立测试库初始化/组件重开已通过；真实 Desktop agent 数据面失败、setup 正常，整 Host 重启无效，见[现场 §11.6–11.7](../../VERIFICATION-LOCAL-ACCEPTANCE-DEV6.md)。dev.7 的 GET body mode/health/错误提示修复及单独的连接依赖补丁候选见[dev.7 报告](../../VERIFICATION-AGENT-DEV7.md)。混合 GET/POST 路由需要连接桥修复，仅安装 dev.7 不代表全页恢复；不手改活依赖，也不由本轮执行升级。下文未安装、未验和 dev.5 计数属于原合同编写时的历史状态。
+
 本文件描述候选实现，不是启用、登录、调用模型或发布指令。默认 `disabled:true`、`enabled:false`、`initializeEmpty:false`、`dataRoot:null`、`localChat:false`、`dshModel.enabled:false`；没有改现有 profile。真实管理器、认证 HTTP 和浏览器仍须后续正式验收。
 
 ## DSH 模型与本地会话

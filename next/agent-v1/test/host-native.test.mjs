@@ -22,12 +22,14 @@ const deferred = () => { let resolve; const promise = new Promise(done => { reso
 
 test('unwired Host registers owner-route descriptors but never fabricates an application or opens storage', async () => {
   const f = hostFixture(); await installAgentPlane(f.ctx);
-  assert.equal(f.routes.size, 27);
+  assert.equal(f.routes.size, 28);
   for(const name of ['creation-start','creation-intention','summary-creation','expression-preview'])assert.deepEqual(f.routes.get('/api/juebot/agent/'+name).methods,['POST']);
   assert.deepEqual(f.routes.get('/api/juebot/agent/trace').methods,['GET']);assert.deepEqual(f.routes.get('/api/juebot/agent/bili-source').methods,['GET','POST']);
   assert.deepEqual(f.routes.get('/api/juebot/agent/creation-recovery').methods, ['POST']);
   assert.deepEqual(f.routes.get('/api/juebot/agent/reconcile').methods, ['POST']);
-  for (const [path, route] of f.routes) { assert.ok(path.startsWith('/api/juebot/agent/')); assert.equal(route.requestBody, 'streaming'); }
+  for (const [path, route] of f.routes) { assert.ok(path.startsWith('/api/juebot/agent/')); assert.equal(route.requestBody, route.methods.includes('POST') ? 'streaming' : 'buffered'); }
+  const health = await f.routes.get('/api/juebot/agent/health').fetch(new Request('http://offline.invalid/api/juebot/agent/health'));
+  assert.equal(health.status, 200); assert.deepEqual(await health.json(), { ok: true, data: { probe: 1 } });
   const response = await f.routes.get('/api/juebot/agent/status').fetch(new Request('http://offline.invalid/api/juebot/agent/status'));
   assert.equal(response.status, 503); assert.deepEqual(await response.json(), { ok: false, error: { code: 'AGENT_UNAVAILABLE' } });
   await f.dispose(); assert.equal(f.routes.size, 0);
