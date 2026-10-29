@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "juebot · 配置候选",
+    "description": "原生身份设置、个人QQ管理员待证明登记与只读路径检查。保存profile控制配置，不打开正式业务数据库，不连接QQ/B站、模型或Code。"
+  }
+}

@@ -1,0 +1,32 @@
+juebot development bundle
+Package: @local/dsh-juebot
+Version: 0.1.0-dev.2
+
+Scope and status
+----------------
+This bundle provides a native read-only console and activation-time Host
+in-memory diagnostics, not a connected chat bot or an editable setup page.
+The patch inserts the active juebot-console and the separate disabled
+juebot-host storage backend with storagePath:null. No preset or existing
+third-party row is overridden. No persistent database, QQ/model connection,
+Code execution, background polling or administrative write action is started
+by the console. Native Host and Client verification must be reported separately
+from local tests and this metadata; visual acceptance is not implied.
+
+Compatibility declaration
+-------------------------
+The manifest targets DSH 0.2.1-rc.3 exactly.
+Node >=22.18.0 is a declared requirement, not a claim that every matching
+Node version has been tested. Runtime and integration evidence must be
+reported separately from this declaration.
+No dependencies or package lifecycle scripts are declared.
+
+Artwork provenance
+------------------
+icon.svg is original artwork created specifically for juebot in this
+metadata round: a robot-shaped speech bubble and a memory-chip antenna,
+constructed from basic SVG geometry. It incorporates no third-party artwork,
+fonts, remote images, linked resources, or scripts.
+XML parsing and static resource checks do not prove rendering in the DSH UI.
+This NOTICE records provenance and scope; it does not establish or change
+the license of other project files.

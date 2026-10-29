@@ -1,0 +1,88 @@
+{
+  "version": "0.2.0-dev.1",
+  "node": "v24.21.0",
+  "inputs": [
+    {
+      "file": "candidates/0.2.0-dev.1/tsconfig.json",
+      "sha256": "a04787b1ed9f4ab5e5ae5418346c32ae0a31f8e1a8c7b83c95e3e764cce33001"
+    },
+    {
+      "file": "src/contracts.ts",
+      "sha256": "3790309b5dd1065c969139db847a0679de7ccad5c75200f278dc21427d4d25eb"
+    },
+    {
+      "file": "src/control.ts",
+      "sha256": "c00bce08500ca53c93a6d08272de0e320aee6dca89058b2bcb3bea615506469a"
+    },
+    {
+      "file": "src/index.ts",
+      "sha256": "23bffc76bb35772c8be987d2b64f8edf61ba6b437f7b17c6b2a68cfced69918f"
+    },
+    {
+      "file": "src/memory.ts",
+      "sha256": "f483048dc41b89405f475e9cbc6f2b459fd2720a5d563dde118a0f401ed9742b"
+    },
+    {
+      "file": "src/runtime.ts",
+      "sha256": "d62a0cd3bc298d00e6adac35ff17a5fb1a330ecf7a82db3458997a61e6ff286f"
+    },
+    {
+      "file": "src/storage.ts",
+      "sha256": "21a32b075b7c9ea01796754709c98c33eda138640da793ba4b85bec2ca971ac1"
+    },
+    {
+      "file": "tsconfig.json",
+      "sha256": "77f9fe1ef40e96f74b8f8f980bded34aafa3a16cf71e6a20c1853d0880dc2463"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/contracts.d.ts",
+      "sha256": "451569d1ae30691b78c010db2e8bf6e0c15d8f01c59766bc3ff5ae6bb6b4a1ad"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/contracts.js",
+      "sha256": "090fc4d88385a49191cd9465ce286d801b2a48c63214e708e5a6f827d30898ae"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/control.d.ts",
+      "sha256": "c32e3fcbdc6d3b179c6ef77221520cfd9d23f3c6576fdc30a83b5bc7196a0083"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/control.js",
+      "sha256": "45d9baeed86d3ed07937ebb181fdf0fc998703ebece66d22e2dfc5a606ce7153"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/index.d.ts",
+      "sha256": "23bffc76bb35772c8be987d2b64f8edf61ba6b437f7b17c6b2a68cfced69918f"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/index.js",
+      "sha256": "bdd59ebba899b4389192b9392876398b8fa2548bf105f4ce37d400ffb588174e"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/memory.d.ts",
+      "sha256": "9247963d4226b3c947132fadd3008e56d86d7eb6e8adf409308c0241c088bd0d"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/memory.js",
+      "sha256": "6206f1a7c0ae96ab1e529097c5f93401dcfdacc71aaa2378ea57afa82c6c825e"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/runtime.d.ts",
+      "sha256": "7af4fcd714f22c098eb726d16af9ad8e716020a2dd88ec44c8b7d9e368aede8c"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/runtime.js",
+      "sha256": "542a828df03a6494f4c8ad83bfb4297413ceacb002e0f687edd1ae01b13b52dd"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/storage.d.ts",
+      "sha256": "b96b58f27071036354db4d06fcffd078586c4d283a8e1c38c9a1c601643ad6ad"
+    },
+    {
+      "file": "candidates/0.2.0-dev.1/bundle/lib/storage.js",
+      "sha256": "e60c12ba282859b3e219e8ced6fe18664c6c83e766fb34840cd7db77a546ac0f"
+    }
+  ]
+}

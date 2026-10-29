@@ -1,0 +1,24 @@
+# Private/runtime/generated local state
+.git/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.log
+*.tap
+.install-backup/
+.test-tmp/
+work/
+evidence/
+runtime/
+logs/
+# Keep shipped candidates, manifests and tgz archives tracked.

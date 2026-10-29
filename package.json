@@ -1,0 +1,17 @@
+{
+  "name": "@local/juebot-core",
+  "version": "0.0.0-p0.3",
+  "private": true,
+  "type": "module",
+  "description": "juebot development workspace: offline core, SQLite adapter and disabled Host bundle",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --experimental-test-isolation=none --test test/*.test.ts test/*.test.mjs",
+    "build": "node scripts/build.mjs",
+    "probe:sqlite": "node scripts/probe-sqlite.mjs",
+    "build:candidate": "node scripts/build-candidate.mjs",
+    "test:candidate": "node --experimental-strip-types --experimental-test-isolation=none --test test/control.test.ts test/settings-*.test.mjs test/candidate-package.test.mjs"
+  }
+}

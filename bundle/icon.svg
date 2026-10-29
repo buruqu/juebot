@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="juebot-icon-title juebot-icon-desc">
+  <title id="juebot-icon-title">juebot</title>
+  <desc id="juebot-icon-desc">Original robot-shaped speech bubble with a golden memory-chip antenna.</desc>
+  <rect x="4" y="4" width="120" height="120" rx="29" fill="#142D42"/>
+  <path d="M64 31v10" fill="none" stroke="#F4C76B" stroke-width="6" stroke-linecap="round"/>
+  <path d="M49 20h5m-5 8h5m20-8h5m-5 8h5" fill="none" stroke="#F4C76B" stroke-width="3" stroke-linecap="round"/>
+  <rect x="53" y="14" width="22" height="20" rx="5" fill="#F4C76B"/>
+  <rect x="59" y="20" width="10" height="8" rx="2" fill="#142D42"/>
+  <rect x="14" y="57" width="10" height="23" rx="5" fill="#68D8C8"/>
+  <rect x="104" y="57" width="10" height="23" rx="5" fill="#68D8C8"/>
+  <path d="M41 40h46a17 17 0 0 1 17 17v23a17 17 0 0 1-17 17H58l-18 13V97a17 17 0 0 1-16-17V57a17 17 0 0 1 17-17Z" fill="#A2EBDD"/>
+  <rect x="39" y="56" width="12" height="17" rx="6" fill="#142D42"/>
+  <rect x="77" y="56" width="12" height="17" rx="6" fill="#142D42"/>
+  <path d="M53 82q11 8 22 0" fill="none" stroke="#142D42" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="33" cy="78" r="3" fill="#68D8C8"/>
+  <circle cx="95" cy="78" r="3" fill="#68D8C8"/>
+</svg>

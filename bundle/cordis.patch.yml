@@ -1,0 +1,9 @@
+- insert:
+    - id: juebot-console
+      name: '@local/dsh-juebot'
+      config: {}
+    - id: juebot-host
+      name: '@local/dsh-juebot/storage-host'
+      disabled: true
+      config:
+        storagePath: null

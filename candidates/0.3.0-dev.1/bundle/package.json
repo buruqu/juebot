@@ -1,0 +1,62 @@
+{
+  "name": "@local/dsh-juebot",
+  "version": "0.3.0-dev.1",
+  "private": true,
+  "type": "module",
+  "description": "Independent agent candidate with retained setup console; agent and storage backends disabled by default; trusted Host ports require configuration.",
+  "exports": {
+    ".": "./console-host.js",
+    "./client": "./client.js",
+    "./storage-host": "./host.js",
+    "./storage-host/locale/*.json": "./storage-locale/*.json",
+    "./storage-host/icon": "./icon.svg",
+    "./core": "./lib/index.js",
+    "./storage": "./lib/storage.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./agent-host": "./agent/host/entry.js"
+  },
+  "files": [
+    "console-host.js",
+    "diagnostics.js",
+    "settings-domain.js",
+    "settings-http.js",
+    "settings-path.js",
+    "settings-tool.js",
+    "client.js",
+    "storage-locale/*.json",
+    "host.js",
+    "sqlite-driver.js",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "NOTICE",
+    "agent/host/*.js",
+    "agent/lib/**/*.js",
+    "agent/lib/**/*.d.ts"
+  ],
+  "engines": {
+    "dsh": "0.2.1-rc.3",
+    "node": ">=22.18.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-storage-domain": "0.2.1-rc.3",
+    "zod": "4.4.3"
+  }
+}

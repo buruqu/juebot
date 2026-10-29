@@ -1,0 +1,50 @@
+{
+  "name": "@local/dsh-juebot",
+  "version": "0.1.0-dev.2",
+  "private": true,
+  "type": "module",
+  "description": "juebot native read-only console and Host diagnostics; storage backend disabled by default, no QQ/model/Code activation.",
+  "exports": {
+    ".": "./console-host.js",
+    "./client": "./client.js",
+    "./storage-host": "./host.js",
+    "./storage-host/locale/*.json": "./storage-locale/*.json",
+    "./storage-host/icon": "./icon.svg",
+    "./core": "./lib/index.js",
+    "./storage": "./lib/storage.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "console-host.js",
+    "diagnostics.js",
+    "client.js",
+    "storage-locale/*.json",
+    "host.js",
+    "sqlite-driver.js",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "NOTICE"
+  ],
+  "engines": {
+    "dsh": "0.2.1-rc.3",
+    "node": ">=22.18.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+juebot development bundle
+Package: @local/dsh-juebot
+Version: 0.3.0-dev.5
+
+Scope and status
+----------------
+This is an undeployed setup candidate. It persists small profile-namespaced
+control settings through the Host storage domain. Administrator numbers are
+personal-QQ preregistrations and remain pending-proof; official QQ OpenID and
+Bilibili identity mapping are not implemented. Path check/confirmation uses
+metadata only and never creates, opens or migrates a business database.
+The separate storage backend remains disabled with storagePath:null.
+No QQ/Bilibili, model, Code executor or background operations are activated.
+Native Host, authenticated HTTP and visual verification are separate from local
+tests. Installation or restart requires the official DSH manager and authorization.
+
+Compatibility declaration
+-------------------------
+The manifest targets DSH 0.2.1-rc.3 exactly.
+Node >=22.18.0 is a declared requirement, not a claim that every matching
+Node version has been tested. Runtime and integration evidence must be
+reported separately from this declaration.
+Only exact shipped storage-domain and Zod peers are declared. No dependencies
+or package lifecycle scripts are declared; do not auto-install missing peers.
+
+Artwork provenance
+------------------
+icon.svg is original artwork created specifically for juebot in this
+metadata round: a robot-shaped speech bubble and a memory-chip antenna,
+constructed from basic SVG geometry. It incorporates no third-party artwork,
+fonts, remote images, linked resources, or scripts.
+XML parsing and static resource checks do not prove rendering in the DSH UI.
+This NOTICE records provenance and scope; it does not establish or change
+the license of other project files.

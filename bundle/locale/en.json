@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "juebot — read-only manager",
+    "description": "Native read-only juebot management and activation-time Host diagnostics. The console does not open a persistent database, connect QQ, invoke models or execute Code. The separate storage backend remains disabled by default."
+  }
+}

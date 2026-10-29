@@ -1,0 +1,17 @@
+- insert:
+    - id: juebot-console
+      name: '@local/dsh-juebot'
+      config: {}
+    - id: juebot-host
+      name: '@local/dsh-juebot/storage-host'
+      disabled: true
+      config:
+        storagePath: null
+    - id: juebot-agent
+      name: '@local/dsh-juebot/agent-host'
+      disabled: true
+      config:
+        enabled: false
+        initializeEmpty: false
+        dataRoot: null
+        namespace: juebot-agent

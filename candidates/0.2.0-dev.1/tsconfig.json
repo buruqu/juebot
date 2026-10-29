@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "rewriteRelativeImportExtensions": true,
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false,
+    "rootDir": "../../src",
+    "outDir": "./bundle/lib",
+    "incremental": false
+  },
+  "include": ["../../src/**/*.ts"]
+}

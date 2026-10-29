@@ -1,0 +1,175 @@
+{
+  "package": "@local/dsh-juebot",
+  "version": "0.2.0-dev.1",
+  "backendDefaultDisabled": true,
+  "setupConsoleEnabled": true,
+  "businessDatabaseOpened": false,
+  "installed": false,
+  "archive": "candidates/0.2.0-dev.1/artifacts/dsh-juebot-0.2.0-dev.1.tgz",
+  "archiveBytes": 44052,
+  "archiveSha256": "4b7e7537590d2d1327d9171ee905cb957e9b0b616f1e7e352550bdbe67433353",
+  "fileCount": 29,
+  "files": [
+    {
+      "file": "NOTICE",
+      "bytes": 1769,
+      "sha256": "79645c94abba8f14b0f1d65b01977c8905fb0279a0abfd1dc30ac6d623d02f44"
+    },
+    {
+      "file": "client.js",
+      "bytes": 45395,
+      "sha256": "b1160c6af7e706def6bf344553bafb5b4ee8cca4a725e979101db99f97c4b1d0"
+    },
+    {
+      "file": "console-host.js",
+      "bytes": 5680,
+      "sha256": "78007d3b30543aa20fd10589c273f6f768a3be352b675dc04b1c988a4327af6c"
+    },
+    {
+      "file": "cordis.patch.yml",
+      "bytes": 212,
+      "sha256": "624ea0e71bf4ad1f7b73b24522c386cb17f3ce202fcf266f2f71cfe726c4f4ce"
+    },
+    {
+      "file": "diagnostics.js",
+      "bytes": 7071,
+      "sha256": "91779463e86749fe4e2257eff4b2d4fbe7921523e23d6551c5379fe2c97db56d"
+    },
+    {
+      "file": "host.js",
+      "bytes": 1472,
+      "sha256": "cecd19672864669b2350602f6007bc9766b1ca73543a3245fc3680d61df14bf0"
+    },
+    {
+      "file": "icon.svg",
+      "bytes": 1333,
+      "sha256": "74202ef3b42d636fe3e831a16239ad84f5cf14bfe6e0128fac1ca59ee67c4c23"
+    },
+    {
+      "file": "lib/contracts.d.ts",
+      "bytes": 2538,
+      "sha256": "451569d1ae30691b78c010db2e8bf6e0c15d8f01c59766bc3ff5ae6bb6b4a1ad"
+    },
+    {
+      "file": "lib/contracts.js",
+      "bytes": 3217,
+      "sha256": "090fc4d88385a49191cd9465ce286d801b2a48c63214e708e5a6f827d30898ae"
+    },
+    {
+      "file": "lib/control.d.ts",
+      "bytes": 3030,
+      "sha256": "c32e3fcbdc6d3b179c6ef77221520cfd9d23f3c6576fdc30a83b5bc7196a0083"
+    },
+    {
+      "file": "lib/control.js",
+      "bytes": 12988,
+      "sha256": "45d9baeed86d3ed07937ebb181fdf0fc998703ebece66d22e2dfc5a606ce7153"
+    },
+    {
+      "file": "lib/index.d.ts",
+      "bytes": 121,
+      "sha256": "23bffc76bb35772c8be987d2b64f8edf61ba6b437f7b17c6b2a68cfced69918f"
+    },
+    {
+      "file": "lib/index.js",
+      "bytes": 121,
+      "sha256": "bdd59ebba899b4389192b9392876398b8fa2548bf105f4ce37d400ffb588174e"
+    },
+    {
+      "file": "lib/memory.d.ts",
+      "bytes": 1988,
+      "sha256": "9247963d4226b3c947132fadd3008e56d86d7eb6e8adf409308c0241c088bd0d"
+    },
+    {
+      "file": "lib/memory.js",
+      "bytes": 6677,
+      "sha256": "6206f1a7c0ae96ab1e529097c5f93401dcfdacc71aaa2378ea57afa82c6c825e"
+    },
+    {
+      "file": "lib/runtime.d.ts",
+      "bytes": 2719,
+      "sha256": "7af4fcd714f22c098eb726d16af9ad8e716020a2dd88ec44c8b7d9e368aede8c"
+    },
+    {
+      "file": "lib/runtime.js",
+      "bytes": 12080,
+      "sha256": "542a828df03a6494f4c8ad83bfb4297413ceacb002e0f687edd1ae01b13b52dd"
+    },
+    {
+      "file": "lib/storage.d.ts",
+      "bytes": 2824,
+      "sha256": "b96b58f27071036354db4d06fcffd078586c4d283a8e1c38c9a1c601643ad6ad"
+    },
+    {
+      "file": "lib/storage.js",
+      "bytes": 25636,
+      "sha256": "e60c12ba282859b3e219e8ced6fe18664c6c83e766fb34840cd7db77a546ac0f"
+    },
+    {
+      "file": "locale/en.json",
+      "bytes": 319,
+      "sha256": "04f867dcf24c4f9797af8137a30f8bec1dda092471ae6aaa346a00d654f5a07b"
+    },
+    {
+      "file": "locale/zh.json",
+      "bytes": 260,
+      "sha256": "35b9a47f8c5e553a62c0078c5326c55551565a45e164fb47a9be90bd5e572350"
+    },
+    {
+      "file": "package.json",
+      "bytes": 1528,
+      "sha256": "c3358fab1ecbd083e1f5bc4dd6ce93f17330e6e3d53baaad8526491452100ead"
+    },
+    {
+      "file": "settings-domain.js",
+      "bytes": 7894,
+      "sha256": "b377c0bd7a542f61260928837eb13fef9282577bc23ef14c2e6e78f4a81b7e70"
+    },
+    {
+      "file": "settings-http.js",
+      "bytes": 5520,
+      "sha256": "8b3b05fcbb75ef6b58704ad4a3a907b06a755c9a78f52f28847faf21f403980d"
+    },
+    {
+      "file": "settings-path.js",
+      "bytes": 3643,
+      "sha256": "445c6ba94a856436eed0a43bb90bd18e6b58ec993854d0af56e1c695f638c617"
+    },
+    {
+      "file": "settings-tool.js",
+      "bytes": 3641,
+      "sha256": "a70bbafe82e4ae77230c58ae932d0bd16173808eb979ea5f39e513bd31e3118b"
+    },
+    {
+      "file": "sqlite-driver.js",
+      "bytes": 2822,
+      "sha256": "2675df90d0c2a82c289a37f17594bb5a5c08cc1b3b56c3f9185c9c1484de754d"
+    },
+    {
+      "file": "storage-locale/en.json",
+      "bytes": 304,
+      "sha256": "753e9168891004d5d83699bb74ad558a6fe70d1c6fb15b593b0c16ddfee87496"
+    },
+    {
+      "file": "storage-locale/zh.json",
+      "bytes": 271,
+      "sha256": "59f2a9e7167754e40518d4bf10d051498141cf433b44eaed8b17cb38cd732223"
+    }
+  ],
+  "checked": [
+    "source/emission build receipt",
+    "manifest/version/peers",
+    "exact disabled patch",
+    "export targets",
+    "static/dynamic JS imports",
+    "complete allowlist",
+    "archive paths and byte equality"
+  ],
+  "notVerified": [
+    "real DSH mount/unmount",
+    "authenticated Host HTTP",
+    "native UI rendering",
+    "QQ/Bilibili/model connectivity",
+    "real SDK storage durability"
+  ]
+}

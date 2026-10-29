@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "juebot storage backend — disabled by default",
+    "description": "Optional SQLite runtime. Kept disabled with no storage path for this rollout. It does not connect QQ, invoke models or execute Code tasks; activating a real data path requires separate authorization."
+  }
+}
